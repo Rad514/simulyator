@@ -1,0 +1,61 @@
+<html lang="ru"> 
+ <head> 
+  <meta charset="UTF-8"> 
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+  <title>Пивоварня Артель</title> 
+  <script src="https://cdn.tailwindcss.com"></script> 
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"> 
+ </head> 
+ <body class="bg-gray-100"> 
+  <div class="flex h-screen"> <!-- Sidebar --> 
+   <div class="bg-yellow-300 w-64 p-4"> 
+    <div class="flex items-center mb-4"> 
+     <img src="https://placehold.co/40x40" alt="Logo" class="mr-2" width="40" height="40"> <span class="font-bold text-sm">АРТЕЛЬ / 1C:ERP Управление предприятием 2</span> 
+    </div> 
+    <ul> 
+     <li class="mb-2"> <button id="productionBtn" class="flex items-center text-black w-full text-left"> <i class="fas fa-industry mr-2"></i> <span>Производство</span> </button> </li> 
+     <li class="mb-2"> <button id="warehouseDeliveryBtn" class="flex items-center text-black w-full text-left"> <i class="fas fa-warehouse mr-2"></i> <span>Склад и доставка</span> </button> </li> 
+    </ul> 
+   </div> <!-- Main Content --> 
+   <div class="flex-1 flex flex-col"> <!-- Header --> 
+    <div class="bg-yellow-200 p-2 flex items-center justify-between"> 
+     <div class="flex items-center"> 
+      <img src="https://placehold.co/20x20" alt="Icon" class="mr-2" width="20" height="20"> <span class="text-sm">АРТЕЛЬ / 1C:ERP Управление предприятием 2 (1C:Предприятие)</span> 
+     </div> 
+     <div class="flex items-center"> <span class="text-sm">Отчеты по производству</span> <span class="mx-2">/</span> <span class="text-sm font-bold">Заказы на производство</span> 
+     </div> 
+    </div> <!-- Content --> 
+    <div class="p-4 flex-1"> 
+     <div id="productionTab" class="tab active"> 
+      <h2 class="text-lg font-bold mb-4">Заказы на производство</h2> <button id="createOrderBtn" class="bg-green-500 text-white p-2 mb-4">Создать заказ</button> 
+      <div id="orderDetails" class="hidden"> 
+       <h3 class="text-lg font-bold mb-2">Заказ на производство (создание)</h3> <label for="status" class="block mb-2">Статус:</label> <select id="status" class="border border-gray-300 p-2 mb-4 w-full"> <option value="toProduction">К производству</option> </select> <label for="date" class="block mb-2">Дата:</label> 
+       <input type="date" id="date" class="border border-gray-300 p-2 mb-4 w-full"> <label for="department" class="block mb-2">Подразделение:</label> <select id="department" class="border border-gray-300 p-2 mb-4 w-full"> <option value="bottlingShop">Цех розлива</option> </select> 
+       <h4 class="text-lg font-bold mb-2">Продукция</h4> <label for="product" class="block mb-2">Номенклатура:</label> 
+       <input type="text" id="product" placeholder="Напиток пивной" class="border border-gray-300 p-2 mb-4 w-full"> <label for="quantity" class="block mb-2">Количество:</label> 
+       <input type="number" id="quantity" placeholder="Количество бутылок" class="border border-gray-300 p-2 mb-4 w-full"> <label for="recipient" class="block mb-2">Получатель:</label> <select id="recipient" class="border border-gray-300 p-2 mb-4 w-full"> <option value="finishedGoodsWarehouse">Склад готовой продукции</option> </select> <label for="startDate" class="block mb-2">Начать не ранее:</label> 
+       <input type="date" id="startDate" class="border border-gray-300 p-2 mb-4 w-full"> <label for="desiredDate" class="block mb-2">Желаемая дата выпуска:</label> 
+       <input type="date" id="desiredDate" class="border border-gray-300 p-2 mb-4 w-full"> <button id="saveOrderBtn" class="bg-blue-500 text-white p-2">Сохранить</button> 
+      </div> 
+      <div id="orderList"> 
+       <h4 class="text-lg font-bold mb-2">Список заказов</h4> 
+       <ul id="orders" class="list-disc pl-5"> <!-- Example orders --> 
+        <li class="mb-2">00AP-000605 - 20.03.2025</li> 
+        <li class="mb-2">00AP-000606 - 20.03.2025</li> 
+       </ul> 
+      </div> 
+      <div id="queueManagement" class="hidden"> 
+       <h4 class="text-lg font-bold mb-2">Управление очередью заказов на производство</h4> <a href="https://docs.google.com/spreadsheets/d/18AJn_oRvttvV1fVprxLyMGMqO3p2XdpOXHLa5o9FljM/edit?usp=drivesdk" target="_blank" class="text-blue-500 underline mb-4 block">См. лист 7</a> 
+       <div id="orderQueue"></div> 
+      </div> 
+     </div> 
+    </div> 
+   </div> 
+  </div> 
+  <script>
+    document.getElementById('createOrderBtn').addEventListener('click', function() {
+      document.getElementById('orderDetails').classList.toggle('hidden');
+    });
+  </script> 
+ </body>
+</html>
